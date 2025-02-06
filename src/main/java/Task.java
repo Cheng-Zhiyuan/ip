@@ -1,5 +1,4 @@
 public class Task {
-
     //parameters for checking and unchecking tasks
     public static final String EMPTY_BOX = "[ ]";
     public static final String MARKED_BOX = "[X]";
@@ -25,4 +24,7 @@ public class Task {
         return statusIcon + " " + description;
     }
 
+    public String getDescription() {
+        return description;
+    }
 }
