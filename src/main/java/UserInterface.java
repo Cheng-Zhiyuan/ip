@@ -42,4 +42,9 @@ public class UserInterface {
             listIndex++;
         }
     }
+    public static void printAddedTask(Task task, int taskCount) {
+        System.out.printf(INDENT + "Got it. I've added this task:\n","");
+        System.out.printf(INDENT + "%s\n", "", task.getTaskString());
+        System.out.printf(INDENT + "Now you have %d tasks in the list.%n","", taskCount);
+    }
 }
