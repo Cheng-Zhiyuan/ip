@@ -43,6 +43,7 @@ public class Thoth {
                 Task newTask = new Todo(description);
                 taskManager.addTask(newTask);
                 UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
+
             } else if (userInput.startsWith("deadline")) {
                 String[] parts = userInput.replace("deadline", "").trim().split(" /by ");
                 String description = parts[0];
@@ -51,11 +52,12 @@ public class Thoth {
                 Task newTask = new Deadline(description, by);
                 taskManager.addTask(newTask);
                 UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
+
             } else if (userInput.startsWith("event")) {
                 String[] parts = userInput.replace("event", "").trim().split(" /from ");
                 String description = parts[0].trim(); // Extracts "meeting"
 
-                String from = "No start time specified";
+                String from = "No end time specified";
                 String to = "No end time specified";
 
                 if (parts.length > 1) {
@@ -65,7 +67,6 @@ public class Thoth {
                         to = timeParts[1].trim(); // Extracts "4pm"
                     }
                 }
-
                 Task newTask = new Event(description, from, to);
                 taskManager.addTask(newTask);
                 UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
