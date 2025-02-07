@@ -1,4 +1,3 @@
-
 public class Thoth {
 
     public static void main(String[] args) {
@@ -40,10 +39,10 @@ public class Thoth {
 
                 // mark as todo
             } else if (userInput.startsWith("todo")) {
-                String description = userInput.replace("todo","").trim();
+                String description = userInput.replace("todo", "").trim();
                 Task newTask = new Todo(description);
                 taskManager.addTask(newTask);
-                UserInterface.printAddedTask(newTask,taskManager.getTaskCount());
+                UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
             } else if (userInput.startsWith("deadline")) {
                 String[] parts = userInput.replace("deadline", "").trim().split(" /by ");
                 String description = parts[0];
@@ -51,7 +50,7 @@ public class Thoth {
 
                 Task newTask = new Deadline(description, by);
                 taskManager.addTask(newTask);
-                UserInterface.printAddedTask(newTask,taskManager.getTaskCount());
+                UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
             } else if (userInput.startsWith("event")) {
                 String[] parts = userInput.replace("event", "").trim().split(" /from ");
                 String description = parts[0].trim(); // Extracts "meeting"

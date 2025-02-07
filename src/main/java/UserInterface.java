@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class UserInterface {
-    private Scanner scanner;
+    private final Scanner scanner;
     public static final String INDENT = "%4s";
 
     public UserInterface() {
@@ -42,9 +42,10 @@ public class UserInterface {
             listIndex++;
         }
     }
+
     public static void printAddedTask(Task task, int taskCount) {
-        System.out.printf(INDENT + "Got it. I've added this task:\n","");
+        System.out.printf(INDENT + "Got it. I've added this task:\n", "");
         System.out.printf(INDENT + "%s\n", "", task.getTaskString());
-        System.out.printf(INDENT + "Now you have %d tasks in the list.%n","", taskCount);
+        System.out.printf(INDENT + "Now you have %d tasks in the list.%n", "", taskCount);
     }
 }
