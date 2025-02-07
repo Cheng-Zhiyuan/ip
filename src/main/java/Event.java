@@ -1,16 +1,14 @@
 public class Event extends Task {
 
-    protected String to;
-    protected String from;
+    protected String dateRange;
 
-    public Event(String description, String from, String to) {
+    public Event(String description, String dateRange, String to) {
         super(description);
-        this.from = from;
-        this.to = to;
+        this.dateRange = dateRange;
     }
 
     @Override
-    public String getTaskString() {
-        return "[E]" + super.getTaskString() + " (from: " + from +" to: " + to + ")";
+    public String toString() {
+        return "[E]" + super.toString() + " (from: " + dateRange + ")";
     }
 }
