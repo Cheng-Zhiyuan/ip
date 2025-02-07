@@ -38,7 +38,38 @@ public class Thoth {
                 Task updatedTask = taskManager.getTaskList()[taskIndex];
                 UserInterface.printMarkAsUndone(updatedTask);
 
-                // add tasks
+                // mark as todo
+            } else if (userInput.startsWith("todo")) {
+                String description = userInput.replace("todo","").trim();
+                Task newTask = new Todo(description);
+                taskManager.addTask(newTask);
+                UserInterface.printAddedTask(newTask,taskManager.getTaskCount());
+            } else if (userInput.startsWith("deadline")) {
+                String[] parts = userInput.replace("deadline", "").trim().split(" /by ");
+                String description = parts[0];
+                String by = (parts.length > 1) ? parts[1] : "No deadline specified";
+
+                Task newTask = new Deadline(description, by);
+                taskManager.addTask(newTask);
+                UserInterface.printAddedTask(newTask,taskManager.getTaskCount());
+            } else if (userInput.startsWith("event")) {
+                String[] parts = userInput.replace("event", "").trim().split(" /from ");
+                String description = parts[0].trim(); // Extracts "meeting"
+
+                String from = "No start time specified";
+                String to = "No end time specified";
+
+                if (parts.length > 1) {
+                    String[] timeParts = parts[1].split(" /to ");
+                    from = timeParts[0].trim(); // Extracts "2pm"
+                    if (timeParts.length > 1) {
+                        to = timeParts[1].trim(); // Extracts "4pm"
+                    }
+                }
+
+                Task newTask = new Event(description, from, to);
+                taskManager.addTask(newTask);
+                UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
             } else {
                 Task newTask = new Task(userInput);
                 taskManager.addTask(newTask);
