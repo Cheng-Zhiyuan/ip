@@ -1,3 +1,7 @@
+package thoth.ui;
+
+import thoth.tasks.Task;
+
 import java.util.Scanner;
 
 public class UserInterface {

@@ -1,3 +1,5 @@
+package thoth.tasks;
+
 public class Task {
     //parameters for checking and unchecking tasks
     public static final String EMPTY_BOX = "[ ]";

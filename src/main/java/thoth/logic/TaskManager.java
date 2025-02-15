@@ -1,3 +1,7 @@
+package thoth.logic;
+
+import thoth.tasks.Task;
+
 // For Task commands
 public class TaskManager {
     public static final int MAX_TASKS = 100;

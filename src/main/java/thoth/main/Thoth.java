@@ -1,3 +1,12 @@
+package thoth.main;
+
+import thoth.logic.TaskManager;
+import thoth.tasks.Deadline;
+import thoth.tasks.Event;
+import thoth.tasks.Task;
+import thoth.tasks.Todo;
+import thoth.ui.UserInterface;
+
 public class Thoth {
 
     public static void main(String[] args) {

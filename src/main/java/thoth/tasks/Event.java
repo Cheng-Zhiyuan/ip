@@ -1,3 +1,5 @@
+package thoth.tasks;
+
 public class Event extends Task {
 
     protected String to;

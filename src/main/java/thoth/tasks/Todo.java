@@ -1,3 +1,5 @@
+package thoth.tasks;
+
 public class Todo extends Task {
 
     protected String by;
