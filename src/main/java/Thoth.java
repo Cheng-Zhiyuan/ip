@@ -25,24 +25,57 @@ public class Thoth {
 
                 // mark tasks
             } else if (userInput.startsWith("mark")) {
-                int taskIndex = Integer.parseInt(userInput.replace("mark", "").trim()) - 1;
-                taskManager.markTaskAsDone(taskIndex);
-                Task updatedTask = taskManager.getTaskList()[taskIndex];
-                UserInterface.printMarkAsDone(updatedTask);
+                while (true) {
+                    try {
+                        int taskIndex = Integer.parseInt(userInput.replace("mark", "").trim()) - 1;
+
+                        if (taskIndex < 0 || taskIndex >= taskManager.getTaskCount()) {
+                            System.out.println("Task number out of range! Enter a number between 1 and" + taskManager.getTaskCount());
+                            userInput = ui.readInput();
+                            continue;
+                        }
+
+                        taskManager.markTaskAsDone(taskIndex);
+                        Task updatedTask = taskManager.getTaskList()[taskIndex];
+                        UserInterface.printMarkAsDone(updatedTask);
+                        break;
+
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a number(integer)");
+                    }
+
+                    userInput = ui.readInput();
+                }
 
                 // unmark tasks
             } else if (userInput.startsWith("unmark")) {
-                int taskIndex = Integer.parseInt(userInput.replace("unmark", "").trim()) - 1;
-                taskManager.markTaskAsNotDone(taskIndex);
-                Task updatedTask = taskManager.getTaskList()[taskIndex];
-                UserInterface.printMarkAsUndone(updatedTask);
+                while(true) {
+                    try {
+                        int taskIndex = Integer.parseInt(userInput.replace("unmark", "").trim()) - 1;
+
+                        if (taskIndex < 0 || taskIndex >= taskManager.getTaskCount()) {
+                            System.out.println("Task number out of range! Enter a number between 1 and" + taskManager.getTaskCount());
+                            userInput = ui.readInput();
+                            continue;
+                        }
+
+                        taskManager.markTaskAsNotDone(taskIndex);
+                        Task updatedTask = taskManager.getTaskList()[taskIndex];
+                        UserInterface.printMarkAsUndone(updatedTask);
+                        break;
+
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a number(integer)");
+                    }
+                    userInput = ui.readInput();
+                }
 
                 // mark as todo
             } else if (userInput.startsWith("todo")) {
-                String description = userInput.replace("todo", "").trim();
-                Task newTask = new Todo(description);
-                taskManager.addTask(newTask);
-                UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
+                    String description = userInput.replace("todo", "").trim();
+                    Task newTask = new Todo(description);
+                    taskManager.addTask(newTask);
+                    UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
 
             } else if (userInput.startsWith("deadline")) {
                 String[] parts = userInput.replace("deadline", "").trim().split(" /by ");
