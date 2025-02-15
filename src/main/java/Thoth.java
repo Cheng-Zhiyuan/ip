@@ -72,37 +72,65 @@ public class Thoth {
 
                 // mark as todo
             } else if (userInput.startsWith("todo")) {
+                while (true) {
                     String description = userInput.replace("todo", "").trim();
+
+                    if (description.isEmpty()) {
+                        System.out.println("Opps task description is empty");
+                        userInput = ui.readInput();
+                        continue;
+                    }
+
                     Task newTask = new Todo(description);
                     taskManager.addTask(newTask);
                     UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
+                    break;
+                }
 
             } else if (userInput.startsWith("deadline")) {
-                String[] parts = userInput.replace("deadline", "").trim().split(" /by ");
-                String description = parts[0];
-                String by = (parts.length > 1) ? parts[1] : "No deadline specified";
+                while (true) {
+                    String[] parts = userInput.replace("deadline", "").trim().split(" /by ");
+                    String description = parts[0];
+                    String by = (parts.length > 1) ? parts[1] : "No deadline specified";
 
-                Task newTask = new Deadline(description, by);
-                taskManager.addTask(newTask);
-                UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
+                    if (description.isEmpty() || by.isEmpty()) {
+                        System.out.println("Opps task description is empty");
+                        userInput = ui.readInput();
+                        continue;
+                    }
+
+                    Task newTask = new Deadline(description, by);
+                    taskManager.addTask(newTask);
+                    UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
+                    break;
+                }
 
             } else if (userInput.startsWith("event")) {
-                String[] parts = userInput.replace("event", "").trim().split(" /from ");
-                String description = parts[0].trim(); // Extracts "meeting"
+                while (true) {
+                    String[] parts = userInput.replace("event", "").trim().split(" /from ");
+                    String description = parts[0].trim(); // Extracts "meeting"
 
-                String from = "No end time specified";
-                String to = "No end time specified";
+                    String from = "No end time specified";
+                    String to = "No end time specified";
 
-                if (parts.length > 1) {
-                    String[] timeParts = parts[1].split(" /to ");
-                    from = timeParts[0].trim(); // Extracts "2pm"
-                    if (timeParts.length > 1) {
-                        to = timeParts[1].trim(); // Extracts "4pm"
+                    if (parts.length > 1) {
+                        String[] timeParts = parts[1].split(" /to ");
+                        from = timeParts[0].trim(); // Extracts "2pm"
+                        if (timeParts.length > 1) {
+                            to = timeParts[1].trim(); // Extracts "4pm"
+                        }
                     }
+
+                    if (from.isEmpty() || to.isEmpty() || description.isEmpty()) {
+                        System.out.println("Opps you input is invalid please check your description or timeframe");
+                        userInput = ui.readInput();
+                        continue;
+                    }
+                    Task newTask = new Event(description, from, to);
+                    taskManager.addTask(newTask);
+                    UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
+                    break;
                 }
-                Task newTask = new Event(description, from, to);
-                taskManager.addTask(newTask);
-                UserInterface.printAddedTask(newTask, taskManager.getTaskCount());
             } else {
                 Task newTask = new Task(userInput);
                 taskManager.addTask(newTask);
