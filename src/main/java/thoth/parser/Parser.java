@@ -1,15 +1,6 @@
 package thoth.parser;
 
-import thoth.command.Command;
-import thoth.command.ExitCommand;
-import thoth.command.DefaultCommand;
-import thoth.command.UnknownCommand;
-import thoth.command.ListCommand;
-import thoth.command.TodoCommand;
-import thoth.command.DeadlineCommand;
-import thoth.command.MarkCommand;
-import thoth.command.UnmarkCommand;
-import thoth.command.EventCommand;
+import thoth.command.*;
 
 public class Parser {
 
@@ -34,7 +25,14 @@ public class Parser {
             } catch (NumberFormatException e) {
                 return new UnknownCommand("Please enter a valid number for unmark command.");
             }
-        }else if(userInput.startsWith("todo")) {
+        }else if(userInput.startsWith("delete")) {
+            try {
+                int taskIndex = Integer.parseInt(userInput.replace("delete", "").trim()) - 1;
+                return new DeleteCommand(taskIndex);
+            } catch (NumberFormatException e) {
+                return new UnknownCommand("Please enter a valid number for delete command.");
+            }
+        } else if(userInput.startsWith("todo")) {
             String description = userInput.replace("todo", "").trim();
             if (description.isEmpty()) {
                 return new UnknownCommand("Oops task description is empty");
