@@ -64,6 +64,6 @@ public class Parser {
             return new EventCommand(description,from,to);
 
         }
-        return new DefaultCommand(userInput);
+        return new UnknownCommand("Oops me no understand you~");
     }
 }
