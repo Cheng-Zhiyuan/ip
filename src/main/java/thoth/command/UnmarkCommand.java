@@ -13,7 +13,7 @@ public class UnmarkCommand extends Command{
     @Override
     public void execute(TaskManager taskManager, UserInterface ui) {
         taskManager.markTaskAsNotDone(taskIndex);
-        Task updatedTask = taskManager.getTaskList()[taskIndex];
+        Task updatedTask = taskManager.getTaskList().get(taskIndex);
         UserInterface.printMarkAsUndone(updatedTask);
     }
 }

@@ -13,7 +13,7 @@ public class MarkCommand extends Command{
     @Override
     public void execute(TaskManager taskManager, UserInterface ui) {
         taskManager.markTaskAsDone(taskIndex);
-        Task updatedTask = taskManager.getTaskList()[taskIndex];
+        Task updatedTask = taskManager.getTaskList().get(taskIndex);
         UserInterface.printMarkAsUndone(updatedTask);
     }
 }

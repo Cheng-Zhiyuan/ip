@@ -2,6 +2,7 @@ package thoth.ui;
 
 import thoth.tasks.Task;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -39,10 +40,10 @@ public class UserInterface {
         System.out.printf(INDENT + "%s\n", "", task.getTaskString());
     }
 
-    public static void printTask(Task[] task, int taskCount) {
+    public static void printTask(List<Task> task, int taskCount) {
         int listIndex = 1;
         for (int i = 0; i < taskCount; i++) {
-            System.out.printf(INDENT + "%d. %s%n", "", listIndex, task[i].getTaskString());
+            System.out.printf(INDENT + "%d. %s%n", "", listIndex, task.get(i).getTaskString());
             listIndex++;
         }
     }
@@ -53,8 +54,10 @@ public class UserInterface {
         System.out.printf(INDENT + "Now you have %d tasks in the list.%n", "", taskCount);
     }
 
-    public static void printErrorWrongFormat() {
-        System.out.printf(INDENT + "Please enter a valid number for the command.%n", "");
+    public static void printDeleteTask(List<Task> task, int taskCount) {
+        System.out.printf(INDENT + "Noted. I've removed this task:\n", "");
+        System.out.printf(INDENT + "%s\n", "", task.get(0).getTaskString());
+        System.out.printf(INDENT + "Now you have %d tasks in the list.%n", "", taskCount);
     }
 
 }

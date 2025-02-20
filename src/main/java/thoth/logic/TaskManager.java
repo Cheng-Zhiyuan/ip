@@ -1,31 +1,39 @@
 package thoth.logic;
 
 import thoth.tasks.Task;
+import java.util.ArrayList;
+import java.util.List;
 
 // For Task commands
 public class TaskManager {
-    public static final int MAX_TASKS = 100;
-    private final Task[] taskList = new Task[MAX_TASKS];
-    private int taskCount = 0;
+
+    private final List<Task> taskList = new ArrayList<>();
 
     public void addTask(Task task) {
-        taskList[taskCount] = task;
-        taskCount++;
+        taskList.add(task);
     }
 
     public void markTaskAsDone(int taskId) {
-        taskList[taskId].markAsDone();
+        taskList.get(taskId).markAsDone();
     }
 
     public void markTaskAsNotDone(int taskId) {
-        taskList[taskId].markAsNotDone();
+        taskList.get(taskId).markAsNotDone();
     }
 
     public int getTaskCount() {
-        return taskCount;
+        return taskList.size();
     }
 
-    public Task[] getTaskList() {
+    public List<Task> getTaskList() {
         return taskList;
+    }
+
+    public Task removeTask(int taskId) {
+        return taskList.remove(taskId);
+    }
+
+    public List<Task> getTask(int taskId) {
+        return taskList.subList(taskId, taskList.size());
     }
 }
