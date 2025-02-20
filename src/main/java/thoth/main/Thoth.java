@@ -3,7 +3,13 @@ package thoth.main;
 import thoth.command.Command;
 import thoth.logic.TaskManager;
 import thoth.parser.Parser;
+import thoth.storage.Storage;
+import thoth.tasks.Task;
 import thoth.ui.UserInterface;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 
 public class Thoth {
 
@@ -17,6 +23,18 @@ public class Thoth {
 
         // String for user input
         String userInput;
+
+        try {
+            Storage.createFile();
+            List<Task> loadedTasks = Storage.loadTasks();
+            // Put those tasks into the TaskManager
+            for (Task t : loadedTasks) {
+                taskManager.addTask(t);
+            }
+        } catch (IOException e) {
+            System.err.println("Could not load tasks: " + e.getMessage());
+        }
+
 
         // Create an endless loop for adding list
         while (true) {
