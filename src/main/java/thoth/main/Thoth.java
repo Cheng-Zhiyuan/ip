@@ -3,10 +3,6 @@ package thoth.main;
 import thoth.command.Command;
 import thoth.logic.TaskManager;
 import thoth.parser.Parser;
-import thoth.tasks.Deadline;
-import thoth.tasks.Event;
-import thoth.tasks.Task;
-import thoth.tasks.Todo;
 import thoth.ui.UserInterface;
 
 public class Thoth {
@@ -24,8 +20,11 @@ public class Thoth {
 
         // Create an endless loop for adding list
         while (true) {
+
             userInput = ui.readInput();
+            // extracts out the command from the user input
             Command command = Parser.parse(userInput);
+            // Executes the command parsed out
             command.execute(taskManager,ui);
 
             if(command.isExit()) {
@@ -33,5 +32,4 @@ public class Thoth {
             }
         }
     }
-
 }
