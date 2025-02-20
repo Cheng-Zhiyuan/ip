@@ -1,0 +1,3 @@
+[T][ ] eat
+[D][ ] sleep (by: 15pm)
+[E][ ] sleep and eat (from: 1am to: 6pm)
