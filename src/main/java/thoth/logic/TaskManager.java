@@ -29,8 +29,8 @@ public class TaskManager {
         return taskList;
     }
 
-    public Task removeTask(int taskId) {
-        return taskList.remove(taskId);
+    public void removeTask(int taskId) {
+        taskList.remove(taskId);
     }
 
     public List<Task> getTask(int taskId) {
