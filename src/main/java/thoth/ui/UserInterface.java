@@ -52,4 +52,9 @@ public class UserInterface {
         System.out.printf(INDENT + "%s\n", "", task.getTaskString());
         System.out.printf(INDENT + "Now you have %d tasks in the list.%n", "", taskCount);
     }
+
+    public static void printErrorWrongFormat() {
+        System.out.printf(INDENT + "Please enter a valid number for the command.%n", "");
+    }
+
 }
