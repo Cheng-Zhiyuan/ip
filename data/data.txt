@@ -1,3 +1,6 @@
 [T][ ] eat
-[D][ ] sleep (by: 15pm)
-[E][ ] sleep and eat (from: 1am to: 6pm)
+[D][ ] sleep (by: 9pm)
+[T][ ] eat
+[T][ ] sleep
+[T][ ] lol
+[E][ ] Cheng Zhiyuan attend Cs2113 lecture Friday 21 Feb 2025 (from: 4 to: 6pm)
