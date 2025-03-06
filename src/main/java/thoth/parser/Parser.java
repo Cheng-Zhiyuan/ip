@@ -4,6 +4,8 @@ import thoth.command.*;
 
 public class Parser {
 
+    public static final int INDEX_OFFSET = 1;
+
     public static Command parse(String userInput) {
         userInput = userInput.trim();
 
@@ -13,21 +15,21 @@ public class Parser {
             return new ListCommand();
         } else if (userInput.startsWith("mark")) {
             try {
-                int taskIndex = Integer.parseInt(userInput.replace("mark", "").trim()) - 1;
+                int taskIndex = Integer.parseInt(userInput.replace("mark", "").trim()) - INDEX_OFFSET;
                 return new MarkCommand(taskIndex);
             } catch (NumberFormatException e) {
                 return new UnknownCommand("Please enter a valid number for mark command.");
             }
         } else if (userInput.startsWith("unmark")) {
             try {
-                int taskIndex = Integer.parseInt(userInput.replace("unmark", "").trim()) - 1;
+                int taskIndex = Integer.parseInt(userInput.replace("unmark", "").trim()) - INDEX_OFFSET;
                 return new UnmarkCommand(taskIndex);
             } catch (NumberFormatException e) {
                 return new UnknownCommand("Please enter a valid number for unmark command.");
             }
         } else if (userInput.startsWith("delete")) {
             try {
-                int taskIndex = Integer.parseInt(userInput.replace("delete", "").trim()) - 1;
+                int taskIndex = Integer.parseInt(userInput.replace("delete", "").trim()) - INDEX_OFFSET;
                 return new DeleteCommand(taskIndex);
             } catch (NumberFormatException e) {
                 return new UnknownCommand("Please enter a valid number for delete command.");
@@ -63,7 +65,8 @@ public class Parser {
             }
             return new EventCommand(description, from, to);
 
+        }else {
+            return new UnknownCommand("Oops me no understand you~");
         }
-        return new UnknownCommand("Oops me no understand you~");
     }
 }
