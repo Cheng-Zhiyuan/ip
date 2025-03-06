@@ -15,7 +15,7 @@ public class Storage {
 
     private static final String DEFAULT_FILE_PATH = "C:\\CS2113_IP\\data\\data.txt";
     private static final int MIN_HEADER_SIZE = 7;
-    private static final int  TYPE_INDEX = 1;
+    private static final int TYPE_INDEX = 1;
     private static final int DONE_INDEX = 4;
 
     public static void createFile() throws IOException {
@@ -30,11 +30,13 @@ public class Storage {
             file.createNewFile();
         }
     }
+
     public static void writeFile(String input) throws IOException {
-        try (FileWriter fw = new FileWriter(DEFAULT_FILE_PATH,true)) {
+        try (FileWriter fw = new FileWriter(DEFAULT_FILE_PATH, true)) {
             fw.append(input).append(System.lineSeparator());
         }
     }
+
     public static void saveTasks(List<Task> tasks) throws IOException {
         try (FileWriter fw = new FileWriter(DEFAULT_FILE_PATH, false)) {
             for (Task t : tasks) {
@@ -42,6 +44,7 @@ public class Storage {
             }
         }
     }
+
     public static List<Task> loadTasks() throws IOException {
         List<Task> tasks = new ArrayList<>();
         File f = new File(DEFAULT_FILE_PATH);
@@ -76,7 +79,7 @@ public class Storage {
         // The rest of the line, e.g. "sleep (by: 15pm)"
         String content = line.substring(MIN_HEADER_SIZE).trim();
 
-        switch (taskType) {
+        switch(taskType) {
         case 'T': {
             // e.g. "[T][X] eat" => content = "eat"
             Todo todo = new Todo(content);

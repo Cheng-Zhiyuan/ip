@@ -12,6 +12,7 @@ public class EventCommand extends Command {
     String description;
     String from;
     String to;
+
     public EventCommand(String description, String from, String to) {
         this.description = description;
         this.from = from;

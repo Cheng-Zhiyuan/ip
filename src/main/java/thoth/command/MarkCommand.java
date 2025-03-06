@@ -7,8 +7,9 @@ import thoth.ui.UserInterface;
 
 import java.io.IOException;
 
-public class MarkCommand extends Command{
+public class MarkCommand extends Command {
     int taskIndex;
+
     public MarkCommand(int taskIndex) {
         this.taskIndex = taskIndex;
     }

@@ -8,8 +8,9 @@ import thoth.ui.UserInterface;
 
 import java.io.IOException;
 
-public class TodoCommand extends Command{
+public class TodoCommand extends Command {
     String description;
+
     public TodoCommand(String description) {
         this.description = description;
     }

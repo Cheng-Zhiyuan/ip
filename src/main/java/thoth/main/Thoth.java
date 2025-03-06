@@ -43,9 +43,9 @@ public class Thoth {
             // extracts out the command from the user input
             Command command = Parser.parse(userInput);
             // Executes the command parsed out
-            command.execute(taskManager,ui);
+            command.execute(taskManager, ui);
 
-            if(command.isExit()) {
+            if (command.isExit()) {
                 break;
             }
         }

@@ -1,6 +1,7 @@
 package thoth.logic;
 
 import thoth.tasks.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 

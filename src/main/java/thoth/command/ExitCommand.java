@@ -9,6 +9,7 @@ public class ExitCommand extends Command {
     public void execute(TaskManager taskManager, UserInterface ui) {
         ui.printGoodbye();
     }
+
     @Override
     public boolean isExit() {
         return true;

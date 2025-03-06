@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class DeleteCommand extends Command {
     int taskIndex;
+
     public DeleteCommand(int taskIndex) {
         this.taskIndex = taskIndex;
     }

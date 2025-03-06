@@ -9,36 +9,36 @@ public class Parser {
 
         if (userInput.equals("bye")) {
             return new ExitCommand();
-        }else if(userInput.equals("list")) {
+        } else if (userInput.equals("list")) {
             return new ListCommand();
-        }else if(userInput.startsWith("mark")) {
+        } else if (userInput.startsWith("mark")) {
             try {
                 int taskIndex = Integer.parseInt(userInput.replace("mark", "").trim()) - 1;
                 return new MarkCommand(taskIndex);
             } catch (NumberFormatException e) {
                 return new UnknownCommand("Please enter a valid number for mark command.");
             }
-        }else if(userInput.startsWith("unmark")) {
+        } else if (userInput.startsWith("unmark")) {
             try {
                 int taskIndex = Integer.parseInt(userInput.replace("unmark", "").trim()) - 1;
                 return new UnmarkCommand(taskIndex);
             } catch (NumberFormatException e) {
                 return new UnknownCommand("Please enter a valid number for unmark command.");
             }
-        }else if(userInput.startsWith("delete")) {
+        } else if (userInput.startsWith("delete")) {
             try {
                 int taskIndex = Integer.parseInt(userInput.replace("delete", "").trim()) - 1;
                 return new DeleteCommand(taskIndex);
             } catch (NumberFormatException e) {
                 return new UnknownCommand("Please enter a valid number for delete command.");
             }
-        } else if(userInput.startsWith("todo")) {
+        } else if (userInput.startsWith("todo")) {
             String description = userInput.replace("todo", "").trim();
             if (description.isEmpty()) {
                 return new UnknownCommand("Oops task description is empty");
             }
             return new TodoCommand(description);
-        }else if(userInput.startsWith("deadline")) {
+        } else if (userInput.startsWith("deadline")) {
             String[] parts = userInput.replace("deadline", "").trim().split(" /by ");
             String description = parts[0].trim();
             String by = (parts.length > 1) ? parts[1].trim() : "";
@@ -46,7 +46,7 @@ public class Parser {
                 return new UnknownCommand("Oops task description is empty or deadline not specified");
             }
             return new DeadlineCommand(description, by);
-        }else if(userInput.startsWith("event")) {
+        } else if (userInput.startsWith("event")) {
             String[] parts = userInput.replace("event", "").trim().split(" /from ");
             String description = parts[0].trim(); // Extracts "meeting"
             String from = "";
@@ -58,10 +58,10 @@ public class Parser {
                     to = timeParts[1].trim(); // Extracts "4pm"
                 }
             }
-            if(description.isEmpty() || to.isEmpty() || from.isEmpty()) {
+            if (description.isEmpty() || to.isEmpty() || from.isEmpty()) {
                 return new UnknownCommand("Oops task description is empty or time range not specified");
             }
-            return new EventCommand(description,from,to);
+            return new EventCommand(description, from, to);
 
         }
         return new UnknownCommand("Oops me no understand you~");

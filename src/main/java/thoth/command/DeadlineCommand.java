@@ -12,6 +12,7 @@ import java.io.IOException;
 public class DeadlineCommand extends Command {
     String description;
     String by;
+
     public DeadlineCommand(String description, String by) {
         this.description = description;
         this.by = by;
