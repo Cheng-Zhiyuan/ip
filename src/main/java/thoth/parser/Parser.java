@@ -64,8 +64,10 @@ public class Parser {
                 return new UnknownCommand("Oops task description is empty or time range not specified");
             }
             return new EventCommand(description, from, to);
-
-        }else {
+        } else if (userInput.startsWith("find")) {
+            String keyWord = userInput.replace("find", "").trim();
+            return new FindCommand(keyWord);
+        } else {
             return new UnknownCommand("Oops me no understand you~");
         }
     }
