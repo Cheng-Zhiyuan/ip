@@ -7,7 +7,6 @@ import thoth.storage.Storage;
 import thoth.tasks.Task;
 import thoth.ui.UserInterface;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
