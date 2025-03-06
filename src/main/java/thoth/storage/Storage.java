@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Storage {
 
-    private static final String DEFAULT_FILE_PATH = "C:\\CS2113_IP\\data\\data.txt";
+    private static final String DEFAULT_FILE_PATH = "data/data.txt";
     private static final int MIN_HEADER_SIZE = 7;
     private static final int TYPE_INDEX = 1;
     private static final int DONE_INDEX = 4;
