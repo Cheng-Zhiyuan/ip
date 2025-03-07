@@ -18,6 +18,11 @@ public class Storage {
     private static final int TYPE_INDEX = 1;
     private static final int DONE_INDEX = 4;
 
+    /**
+     * Create a file to store data
+     *
+     * @throws IOException if an I/O error occurs while creating the file
+     */
     public static void createFile() throws IOException {
         File file = new File(DEFAULT_FILE_PATH);
 
@@ -31,12 +36,24 @@ public class Storage {
         }
     }
 
+    /**
+     * Add a new line into the file with the user input
+     *
+     * @param input the string to be written to the file
+     * @throws IOException if an I/O error occurs while writing to this file
+     */
     public static void writeFile(String input) throws IOException {
         try (FileWriter fw = new FileWriter(DEFAULT_FILE_PATH, true)) {
             fw.append(input).append(System.lineSeparator());
         }
     }
 
+    /**
+     * Saves the list of tasks into the data file
+     *
+     * @param tasks the task list that is to be saved
+     * @throws IOException if an I/O error occurs while writing to this file
+     */
     public static void saveTasks(List<Task> tasks) throws IOException {
         try (FileWriter fw = new FileWriter(DEFAULT_FILE_PATH, false)) {
             for (Task t : tasks) {
@@ -45,6 +62,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Load the task from the data file
+     *
+     * @return a list of tasks loaded from the file or an empty list if the file does not exist
+     * @throws IOException if an I/O error occurs while writing to this file
+     */
     public static List<Task> loadTasks() throws IOException {
         List<Task> tasks = new ArrayList<>();
         File f = new File(DEFAULT_FILE_PATH);
@@ -65,6 +88,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Parses a line from the storage file and converts it into a Task object.
+     *
+     * @param line the line to be parsed
+     * @return the corresponding Task object, or null if the line is not in the expected format
+     */
     private static Task parseLineToTask(String line) {
 
         if (line.length() < MIN_HEADER_SIZE) {

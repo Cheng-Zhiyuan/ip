@@ -1,11 +1,31 @@
+/**
+ * Provides functionality to parse user input into executable commands.
+ */
+
 package thoth.parser;
 
-import thoth.command.*;
+import thoth.command.Command;
+import thoth.command.DeadlineCommand;
+import thoth.command.EventCommand;
+import thoth.command.MarkCommand;
+import thoth.command.UnmarkCommand;
+import thoth.command.ExitCommand;
+import thoth.command.FindCommand;
+import thoth.command.ListCommand;
+import thoth.command.UnknownCommand;
+import thoth.command.TodoCommand;
+import thoth.command.DeleteCommand;
 
 public class Parser {
 
     public static final int INDEX_OFFSET = 1;
 
+    /**
+     * parse the user input into executable commands
+     *
+     * @param userInput the input string that the user types
+     * @return the corresponding command to the user input
+     */
     public static Command parse(String userInput) {
         userInput = userInput.trim();
 
