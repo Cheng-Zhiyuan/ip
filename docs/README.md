@@ -48,6 +48,8 @@ Sample output:
     3. [T][ ] repeat
 ``` 
 ### Adding a todo task : _todo_
+The `todo` command adds a new simple task without any associated deadline or time.  
+
 Syntax: 
 ```
     todo TASK_DESCRIPTION
@@ -63,6 +65,8 @@ Sample output:
     Now you have 4 tasks in the list.
 ```
 ### Adding a deadline task : _deadline_
+The `deadline` command creates a task with a deadline. Both a task description and a deadline time must be specified.
+
 Syntax: 
 ```
     deadline TASK_DESCRIPTION /by DEADLINE_TIME
@@ -78,6 +82,8 @@ Sample output:
     Now you have 5 tasks in the list.
 ```
 ### Adding a event task : _event_ 
+The `event` command schedules a task that occurs during a specified time range. The task description, start and end time of the event must be specified.
+
 Syntax: 
 ```
     event TASK_DESCRIPTION /from START_TIME /to END_TIME
@@ -93,6 +99,8 @@ Sample output:
     Now you have 6 tasks in the list.
 ```
 ### Marking a task as Done: _mark_
+The `mark` command sets a task's status to the done state.  
+
 Syntax: 
 ```
     mark TASK_LIST_INDEX
@@ -107,6 +115,7 @@ Sample Output:
     [T][X] eat
 ```
 ### Marking a task as Not Done: _unmark_
+The `unmark` command reverts a task's status back to the not done state.  
 Syntax:
 ```
     unmark TASK_LIST_INDEX
@@ -121,6 +130,8 @@ Sample Output:
     [T][ ] eat
 ```
 ### Deleting a task from the task list: _delete_
+The `delete` command removes a specified task from your list.   
+
 Syntax:
 ```
     detele TASK_LIST_INDEX
@@ -135,10 +146,12 @@ Sample Output:
     [T][ ] sleep
     Now you have 5 tasks in the list.
 ```
-### Finding tasks with a string: _find_
+### Finding tasks with a string: _find_ 
+The `find` command searches for tasks containing a specified keyword (case-insensitive) and displays the matching tasks.    
+
 Syntax:
 ```
-    find STRING_DESCRIPTION
+    find KEYWORD
 ```
 Example code:
 ```
