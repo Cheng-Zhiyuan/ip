@@ -1,6 +1,5 @@
 package thoth.command;
 
-import com.sun.source.util.TaskListener;
 import thoth.logic.TaskManager;
 import thoth.storage.Storage;
 import thoth.tasks.Deadline;
