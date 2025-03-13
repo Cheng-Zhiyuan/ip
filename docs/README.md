@@ -16,8 +16,18 @@ When you start Thoth Task Manager, you will be greeted with a welcome message fo
 
 The bye command terminates the application gracefully. It prints a goodbye message to indicate that the session is closing.
 
-Syntax: ```bye```   
-Sample output: ```Bye. Hope to see you again soon!```
+Syntax: 
+```
+    bye
+```  
+Example code:   
+```
+    bye
+```
+Sample output: 
+```
+    Bye. Hope to see you again soon!
+```
 
 ### Listing the Task Lists: _list_
 
