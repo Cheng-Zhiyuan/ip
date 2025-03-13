@@ -81,7 +81,7 @@ Sample output:
     [D][ ] work on CS2113 IP (by: today 2359)
     Now you have 5 tasks in the list.
 ```
-### Adding a event task : _event_ 
+### Adding an event task : _event_ 
 The `event` command schedules a task that occurs during a specified time range. The task description, start and end time of the event must be specified.
 
 Syntax: 
