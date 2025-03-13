@@ -18,7 +18,7 @@ public class MarkCommand extends Command {
     public void execute(TaskManager taskManager, UserInterface ui) {
         taskManager.markTaskAsDone(taskIndex);
         Task updatedTask = taskManager.getTaskList().get(taskIndex);
-        UserInterface.printMarkAsUndone(updatedTask);
+        UserInterface.printMarkAsDone(updatedTask);
         try {
             Storage.saveTasks(taskManager.getTaskList());
         } catch (IOException e) {
