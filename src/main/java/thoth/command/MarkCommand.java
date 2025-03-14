@@ -16,6 +16,11 @@ public class MarkCommand extends Command {
 
     @Override
     public void execute(TaskManager taskManager, UserInterface ui) {
+        if (taskIndex < 0 || taskIndex >= taskManager.getTaskList().size()) {
+            UserInterface.printMessage("Task index is out of bounds. Please enter a valid task number.");
+            return;
+        }
+
         taskManager.markTaskAsDone(taskIndex);
         Task updatedTask = taskManager.getTaskList().get(taskIndex);
         UserInterface.printMarkAsDone(updatedTask);

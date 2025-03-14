@@ -15,6 +15,11 @@ public class FindCommand extends Command {
 
     @Override
     public void execute(TaskManager taskManager, UserInterface ui) {
+        if (keyWord.trim().isEmpty()) {
+            UserInterface.printMessage("Keyword cannot be empty. Please enter a valid keyword.");
+            return;
+        }
+
         List<Task> matchedTasks = new ArrayList<>();
 
         // Retrieve the list of tasks from TaskManager
