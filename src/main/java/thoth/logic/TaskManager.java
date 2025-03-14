@@ -61,7 +61,7 @@ public class TaskManager {
     }
 
     /**
-     *  Remove the task at the specific task index
+     * Remove the task at the specific task index
      *
      * @param taskId the index of tht task to be removed
      */
