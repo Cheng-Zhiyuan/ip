@@ -15,6 +15,10 @@ public class DeleteCommand extends Command {
 
     @Override
     public void execute(TaskManager taskManager, UserInterface ui) {
+        if (taskIndex < 0 || taskIndex >= taskManager.getTaskList().size()) {
+            UserInterface.printMessage("Task index is out of bounds. Please enter a valid task number.");
+            return;
+        }
         UserInterface.printDeleteTask(taskManager.getTask(taskIndex), taskManager.getTaskCount() - 1);
         taskManager.removeTask(taskIndex);
         try {
