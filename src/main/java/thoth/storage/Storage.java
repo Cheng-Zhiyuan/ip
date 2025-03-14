@@ -101,16 +101,15 @@ public class Storage {
             return null;
         }
 
-        char taskType = line.charAt(TYPE_INDEX);  // 'D', 'T', or 'E'
-        char doneChar = line.charAt(DONE_INDEX);  // ' ' or 'X'
+        char taskType = line.charAt(TYPE_INDEX);
+        char doneChar = line.charAt(DONE_INDEX);
         boolean isDone = (doneChar == 'X');
 
-        // The rest of the line, e.g. "sleep (by: 15pm)"
         String content = line.substring(MIN_HEADER_SIZE).trim();
 
         switch(taskType) {
         case 'T': {
-            // e.g. "[T][X] eat" => content = "eat"
+
             Todo todo = new Todo(content);
             if (isDone) {
                 todo.markAsDone();
@@ -118,8 +117,6 @@ public class Storage {
             return todo;
         }
         case 'D': {
-            // e.g. "[D][ ] sleep (by: 15pm)" => content = "sleep (by: 15pm)"
-            // Find "(by: "
             int byIndex = content.indexOf("(by:");
             if (byIndex == -1) {
                 // Not well-formed, handle error or return a default
