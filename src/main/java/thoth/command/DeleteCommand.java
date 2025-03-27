@@ -1,8 +1,9 @@
 package thoth.command;
 
-import thoth.logic.TaskManager;
-import thoth.storage.Storage;
-import thoth.ui.UserInterface;
+import thoth.TaskManager;
+import thoth.Storage;
+import thoth.UserInterface;
+import thoth.exceptions.ThothException;
 
 import java.io.IOException;
 
@@ -16,8 +17,7 @@ public class DeleteCommand extends Command {
     @Override
     public void execute(TaskManager taskManager, UserInterface ui) {
         if (taskIndex < 0 || taskIndex >= taskManager.getTaskList().size()) {
-            UserInterface.printMessage("Task index is out of bounds. Please enter a valid task number.");
-            return;
+            throw new ThothException("Task index out of range");
         }
         UserInterface.printDeleteTask(taskManager.getTask(taskIndex), taskManager.getTaskCount() - 1);
         taskManager.removeTask(taskIndex);

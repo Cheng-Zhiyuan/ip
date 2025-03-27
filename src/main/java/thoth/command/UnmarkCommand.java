@@ -1,15 +1,16 @@
 package thoth.command;
 
-import thoth.logic.TaskManager;
-import thoth.storage.Storage;
+import thoth.TaskManager;
+import thoth.Storage;
+import thoth.exceptions.ThothException;
 import thoth.tasks.Task;
-import thoth.ui.UserInterface;
+import thoth.UserInterface;
 
 import java.io.IOException;
 
 public class UnmarkCommand extends Command {
     int taskIndex;
-    
+
     public UnmarkCommand(int taskIndex) {
         this.taskIndex = taskIndex;
     }
@@ -17,8 +18,7 @@ public class UnmarkCommand extends Command {
     @Override
     public void execute(TaskManager taskManager, UserInterface ui) {
         if (taskIndex < 0 || taskIndex >= taskManager.getTaskList().size()) {
-            UserInterface.printMessage("Task index is out of bounds. Please enter a valid task number.");
-            return;
+            throw new ThothException("Task index out of range");
         }
 
         taskManager.markTaskAsNotDone(taskIndex);

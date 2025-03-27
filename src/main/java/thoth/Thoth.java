@@ -1,11 +1,10 @@
-package thoth.main;
+package thoth;
 
 import thoth.command.Command;
-import thoth.logic.TaskManager;
+import thoth.exceptions.TaskParsingException;
+import thoth.exceptions.ThothException;
 import thoth.parser.Parser;
-import thoth.storage.Storage;
 import thoth.tasks.Task;
-import thoth.ui.UserInterface;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,7 +29,7 @@ public class Thoth {
             for (Task t : loadedTasks) {
                 taskManager.addTask(t);
             }
-        } catch (IOException e) {
+        } catch (TaskParsingException | IOException e) {
             System.err.println("Could not load tasks: " + e.getMessage());
         }
 
@@ -38,15 +37,20 @@ public class Thoth {
         // Create an endless loop for adding list
         while (true) {
 
-            userInput = ui.readInput();
-            // extracts out the command from the user input
-            Command command = Parser.parse(userInput);
-            // Executes the command parsed out
-            command.execute(taskManager, ui);
+            try {
+                userInput = ui.readInput();
+                // extracts out the command from the user input
+                Command command = Parser.parse(userInput);
+                // Executes the command parsed out
+                command.execute(taskManager, ui);
 
-            if (command.isExit()) {
-                break;
+                if (command.isExit()) {
+                    break;
+                }
+            } catch (ThothException e) {
+                ui.showError(e.getMessage());
             }
+
         }
     }
 }
