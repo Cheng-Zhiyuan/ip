@@ -1,7 +1,7 @@
 package thoth.command;
 
-import thoth.logic.TaskManager;
-import thoth.ui.UserInterface;
+import thoth.TaskManager;
+import thoth.UserInterface;
 
 public abstract class Command {
     public abstract void execute(TaskManager taskManager, UserInterface ui);

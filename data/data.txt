@@ -1,5 +1,3 @@
-[T][ ] eat
-[T][ ] repeat
-[T][ ] work on CS2113 IP
-[D][ ] work on CS2113 IP (by: today 2359)
-[E][ ] work on CS2113 IP (from: 13/03/2025 12 noon to: 13/03/2025 4 pm)
+[E][X] work on CS2113 IP (from: 13/03/2025 12 noon to: 13/03/2025 4 pm)
+[E][ ] sleep (from: now to: never)
+[D][X] sleep (by: 11pm)
