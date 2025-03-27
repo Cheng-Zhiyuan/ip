@@ -1,7 +1,7 @@
 package thoth.exceptions;
 
-public class InvalidCommandException extends RuntimeException {
-    public InvalidCommandException(String message) {
+public class ThothException extends RuntimeException {
+    public ThothException(String message) {
         super(message);
     }
 }
