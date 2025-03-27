@@ -1,4 +1,4 @@
-package thoth.ui;
+package thoth;
 
 import thoth.tasks.Task;
 
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    private final Scanner scanner;
     public static final String INDENT = "%4s";
+    private final Scanner scanner;
 
     /**
      * Constructs a new UserInterface and initializes the input scanner.
@@ -17,36 +17,12 @@ public class UserInterface {
     }
 
     /**
-     * Reads a line of input from the user.
-     *
-     * @return the input string entered by the user.
-     */
-    public String readInput() {
-        return scanner.nextLine();
-    }
-
-    /**
-     * Prints the greeting message to the console.
-     */
-    public void printGreetingMessage() {
-        System.out.println("Hello! I'm Thoth");
-        System.out.println("What can I do for you?");
-    }
-
-    /**
      * Prints the specified message to the console.
      *
      * @param message the message to be printed.
      */
     public static void printMessage(String message) {
         System.out.println(message);
-    }
-
-    /**
-     * Prints a goodbye message to the console.
-     */
-    public void printGoodbye() {
-        System.out.println("Bye. Hope to see you again soon!");
     }
 
     /**
@@ -107,4 +83,36 @@ public class UserInterface {
         System.out.printf(INDENT + "Now you have %d tasks in the list.%n", "", taskCount);
     }
 
+    /**
+     * Reads a line of input from the user.
+     *
+     * @return the input string entered by the user.
+     */
+    public String readInput() {
+        return scanner.nextLine();
+    }
+
+    /**
+     * Prints the greeting message to the console.
+     */
+    public void printGreetingMessage() {
+        System.out.println("Hello! I'm Thoth");
+        System.out.println("What can I do for you?");
+    }
+
+    /**
+     * Prints a goodbye message to the console.
+     */
+    public void printGoodbye() {
+        System.out.println("Bye. Hope to see you again soon!");
+    }
+
+    /**
+     * Prints the error message to the console.
+     *
+     * @param message the error message to be printed.
+     */
+    public void showError(String message) {
+        System.out.println(message);
+    }
 }

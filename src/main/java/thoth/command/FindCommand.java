@@ -1,8 +1,9 @@
 package thoth.command;
 
-import thoth.logic.TaskManager;
-import thoth.ui.UserInterface;
+import thoth.TaskManager;
+import thoth.UserInterface;
 import thoth.tasks.Task;  // Assuming tasks are represented by a Task class
+
 import java.util.ArrayList;
 import java.util.List;
 

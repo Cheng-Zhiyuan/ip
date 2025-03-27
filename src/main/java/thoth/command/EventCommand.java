@@ -1,10 +1,10 @@
 package thoth.command;
 
-import thoth.logic.TaskManager;
-import thoth.storage.Storage;
+import thoth.TaskManager;
+import thoth.Storage;
 import thoth.tasks.Event;
 import thoth.tasks.Task;
-import thoth.ui.UserInterface;
+import thoth.UserInterface;
 
 import java.io.IOException;
 
